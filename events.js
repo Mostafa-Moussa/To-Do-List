@@ -97,7 +97,7 @@ function getStoredTasks() {
         }
     };
 };
-addButton.onclick = function(){
+function addTasks() {
     if(document.querySelector("section form input").value !== ""){
         let textValue = taskText.value;
         arrayItems(textValue);
@@ -106,7 +106,16 @@ addButton.onclick = function(){
         addTask(tasksItems, i);
         taskText.value = "";
     };
+}
+addButton.onclick = function(){
+    addTasks()
 };
+taskText.addEventListener("keydown", (e) => {
+    if(e.key === "Enter"){
+        e.preventDefault()
+        addTasks()
+    };
+})
 function fCheckIcon(checkIcon, circleIcon, taskP, text){
     checkIcon.addEventListener("click", function (e) {
         let line = document.createElement("s")
